@@ -33,6 +33,7 @@
 		43FDDB572BEE7A1F00A3CAFB /* CloudServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudServiceViewController.swift; sourceTree = "<group>"; };
 		43FDDB582BEE7A1F00A3CAFB /* CloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		43FDDB5B2BEE7A7500A3CAFB /* DocumentWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
+		43FDDB612BEE7ED000A3CAFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		43FDDB312BEE799B00A3CAFB = {
 			isa = PBXGroup;
 			children = (
+				43FDDB612BEE7ED000A3CAFB /* README.md */,
 				43FDDB3C2BEE799B00A3CAFB /* CloudCount */,
 				43FDDB3B2BEE799B00A3CAFB /* Products */,
 			);

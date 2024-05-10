@@ -1,2 +1,3 @@
 # CloudCount
- Test integrating automerge and NSDocument
+
+In progress test integrating automerge and NSDocument
