@@ -1,13 +1,13 @@
 {
-  "originHash" : "96dbfd9dcac63acab49965cf5b354d8cde988dfe28a6194faacfb090640e70a6",
+  "originHash" : "966d850f8068c814c561f04358d77756eeb8b7320f8d937dda744cbe99ce5418",
   "pins" : [
     {
       "identity" : "automerge-repo-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/automerge/automerge-repo-swift.git",
       "state" : {
-        "revision" : "171ef8480fddf78d908c2745748d2ec252cc6316",
-        "version" : "0.1.0"
+        "branch" : "main",
+        "revision" : "7a48691b5068c2217e34b3d8335497b5f0c9663a"
       }
     },
     {
