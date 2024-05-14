@@ -2,11 +2,12 @@ import Foundation
 import Combine
 import Automerge
 import AutomergeRepo
+import NetworkReachability
 
 @AutomergeRepo
-public final class CloudService {
+public final class SharingService {
     
-    public static let shared = CloudService()
+    public static let shared = SharingService()
     
     public struct Status {
         public let state: WebSocketProviderState
@@ -19,11 +20,12 @@ public final class CloudService {
     }
     
     private let repo = Repo(sharePolicy: SharePolicy.agreeable)
-    private var websocket = WebSocketProvider(.init(reconnectOnError: false, loggingAt: .tracing))
+    private var websocket = WebSocketProvider(.init(reconnectOnError: true, loggingAt: .tracing))
+    private let networkMonitor: NetworkMonitor = .init()
     private let statusInner: CurrentValueSubject<Status, Never> = .init(.init(state: .disconnected, error: nil))
     private let documentsStatusInner: CurrentValueSubject<[DocumentId : DocumentStatus], Never> = .init([:])
     private var websocketStateCancelable: AnyCancellable?
-
+    
     init() {
         repo.addNetworkAdapter(adapter: websocket)
         
@@ -40,11 +42,20 @@ public final class CloudService {
             }
         }
         
-        Task {
-            do {
-                try await websocket.connect(to: URL(string: "wss://sync.automerge.org/")!)
-            } catch {
-                statusInner.value = .init(state: .disconnected, error: error)
+        Task { [weak self] in
+            for await path in NetworkMonitor.networkPathUpdates {
+                guard let self else {
+                    return
+                }
+                if path.status == .satisfied {
+                    if self.statusInner.value.state == .disconnected {
+                        await self.connectWebsocket()
+                    }
+                } else {
+                    if self.statusInner.value.state != .disconnected {
+                        await self.shutdownWebsocket()
+                    }
+                }
             }
         }
     }
@@ -56,6 +67,19 @@ public final class CloudService {
     public lazy var documentsStatus: AnyPublisher<[DocumentId : DocumentStatus], Never> = {
         documentsStatusInner.eraseToAnyPublisher()
     }()
+    
+    public var enableWebsocketProvider: Bool = true {
+        didSet {
+            /*guard oldValue != enableWebsocketProvider else {
+                return
+            }
+            if enableWebsocketProvider {
+                
+            } else {
+                shutdownWebsocket()
+            }*/
+        }
+    }
 
     public func documentStatus(id: DocumentId) -> AnyPublisher<DocumentStatus?, Never> {
         documentsStatusInner
@@ -83,7 +107,7 @@ public final class CloudService {
         }
     }
 
-    public func remove(id: DocumentId) async {
+    public func stopSharing(id: DocumentId) async {
         do {
             try await repo.delete(id: id)
         } catch {
@@ -91,9 +115,18 @@ public final class CloudService {
         }
         documentsStatusInner.value.removeValue(forKey: id)
     }
-    
-    public func shutdown() async {
-        await websocket.disconnect()
+
+    public func connectWebsocket(url: URL = URL(string: "wss://sync.automerge.org/")!) async {
+        //await shutdownWebsocket()
+        do {
+            try await websocket.connect(to: url)
+        } catch {
+            statusInner.value = .init(state: .disconnected, error: error)
+        }
     }
     
+    public func shutdownWebsocket() async {
+        await websocket.disconnect()
+    }
+
 }

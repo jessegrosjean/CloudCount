@@ -2,20 +2,20 @@ import Cocoa
 import Combine
 import AutomergeRepo
 
-class CloudServiceViewController: NSViewController {
+class SharingServiceViewController: NSViewController {
 
     @IBOutlet weak var textView: NSTextView!
 
-    var serviceStatus: CloudService.Status = .init(state: .disconnected, error: nil)
-    var documentsStatus: [DocumentId : CloudService.DocumentStatus] = [:]
+    var serviceStatus: SharingService.Status = .init(state: .disconnected, error: nil)
+    var documentsStatus: [DocumentId : SharingService.DocumentStatus] = [:]
     var subscriptions = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Task {
-            let statusPublisher = await CloudService.shared.status
-            let documentsStatusPublisher = await CloudService.shared.documentsStatus
+            let statusPublisher = await SharingService.shared.status
+            let documentsStatusPublisher = await SharingService.shared.documentsStatus
             
             documentsStatusPublisher
                 .receive(on: RunLoop.main)
@@ -44,7 +44,7 @@ class CloudServiceViewController: NSViewController {
             string += " (\(error.localizedDescription))"
         }
         
-        string += "\n\nCloud Documents:\n\n"
+        string += "\n\nShared Documents:\n\n"
         
         for id in documentsStatus.keys.sorted() {
             switch documentsStatus[id]! {

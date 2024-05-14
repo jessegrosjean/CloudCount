@@ -5,22 +5,22 @@ import AutomergeRepo
 class DocumentViewController: NSViewController {
 
     @IBOutlet weak var countLabel: NSTextField!
-    @IBOutlet weak var cloudStatus: NSTextField!
-    @IBOutlet weak var cloudToggleButton: NSButton!
+    @IBOutlet weak var sharingStatus: NSTextField!
+    @IBOutlet weak var sharingToggleButton: NSButton!
 
     var subscriptions = Set<AnyCancellable>()
-    var documentStatus: CloudService.DocumentStatus? {
+    var documentStatus: SharingService.DocumentStatus? {
         didSet {
             switch documentStatus {
             case .none:
-                cloudStatus?.stringValue = "not registered"
-                cloudToggleButton.state = .off
+                sharingStatus?.stringValue = "not registered"
+                sharingToggleButton.state = .off
             case .some(.registered):
-                cloudStatus?.stringValue = "registered"
-                cloudToggleButton.state = .on
+                sharingStatus?.stringValue = "registered"
+                sharingToggleButton.state = .on
             case .some(.registrationFailed(let error)):
-                cloudStatus?.stringValue = "registrationFailed: \(error.localizedDescription)"
-                cloudToggleButton.state = .off
+                sharingStatus?.stringValue = "registrationFailed: \(error.localizedDescription)"
+                sharingToggleButton.state = .off
             }
         }
     }
@@ -28,7 +28,7 @@ class DocumentViewController: NSViewController {
     var document: Document? {
         didSet {
             subscriptions = []
-            cloudToggleButton.isEnabled = document != nil
+            sharingToggleButton.isEnabled = document != nil
             countLabel.stringValue = "\(document?.countStore.count ?? 0)"
             documentStatus = nil
 
@@ -41,7 +41,7 @@ class DocumentViewController: NSViewController {
 
             if let id = document?.countStore.id {
                 Task {
-                    await CloudService.shared
+                    await SharingService.shared
                         .documentStatus(id: id)
                         .receive(on: RunLoop.main)
                         .sink { [weak self] documentStatus in
@@ -74,16 +74,16 @@ class DocumentViewController: NSViewController {
         }
     }
     
-    @IBAction func toggleCloud(_ sender: Any) {
+    @IBAction func toggleSharing(_ sender: Any) {
         guard let countStore = document?.countStore else {
             return
         }
         
         Task {
-            if cloudToggleButton.state == .on {
-                await CloudService.shared.share(store: countStore)
+            if sharingToggleButton.state == .on {
+                await SharingService.shared.share(store: countStore)
             } else {
-                await CloudService.shared.remove(id: countStore.id)
+                await SharingService.shared.stopSharing(id: countStore.id)
             }
         }
     }

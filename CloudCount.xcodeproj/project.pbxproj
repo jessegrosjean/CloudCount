@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43665F012BF393A7004929C9 /* NetworkReachability in Frameworks */ = {isa = PBXBuildFile; productRef = 43665F002BF393A7004929C9 /* NetworkReachability */; };
 		43FDDB3E2BEE799B00A3CAFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB3D2BEE799B00A3CAFB /* AppDelegate.swift */; };
 		43FDDB402BEE799B00A3CAFB /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB3F2BEE799B00A3CAFB /* DocumentViewController.swift */; };
 		43FDDB422BEE799B00A3CAFB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB412BEE799B00A3CAFB /* Document.swift */; };
@@ -15,8 +16,8 @@
 		43FDDB512BEE79F000A3CAFB /* Automerge in Frameworks */ = {isa = PBXBuildFile; productRef = 43FDDB502BEE79F000A3CAFB /* Automerge */; };
 		43FDDB542BEE79FE00A3CAFB /* AutomergeRepo in Frameworks */ = {isa = PBXBuildFile; productRef = 43FDDB532BEE79FE00A3CAFB /* AutomergeRepo */; };
 		43FDDB562BEE7A1000A3CAFB /* CountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB552BEE7A1000A3CAFB /* CountStore.swift */; };
-		43FDDB592BEE7A1F00A3CAFB /* CloudServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB572BEE7A1F00A3CAFB /* CloudServiceViewController.swift */; };
-		43FDDB5A2BEE7A1F00A3CAFB /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB582BEE7A1F00A3CAFB /* CloudService.swift */; };
+		43FDDB592BEE7A1F00A3CAFB /* SharingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB572BEE7A1F00A3CAFB /* SharingServiceViewController.swift */; };
+		43FDDB5A2BEE7A1F00A3CAFB /* SharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB582BEE7A1F00A3CAFB /* SharingService.swift */; };
 		43FDDB5C2BEE7A7500A3CAFB /* DocumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB5B2BEE7A7500A3CAFB /* DocumentWindowController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +31,8 @@
 		43FDDB482BEE799C00A3CAFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43FDDB492BEE799C00A3CAFB /* CloudCount.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CloudCount.entitlements; sourceTree = "<group>"; };
 		43FDDB552BEE7A1000A3CAFB /* CountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountStore.swift; sourceTree = "<group>"; };
-		43FDDB572BEE7A1F00A3CAFB /* CloudServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudServiceViewController.swift; sourceTree = "<group>"; };
-		43FDDB582BEE7A1F00A3CAFB /* CloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
+		43FDDB572BEE7A1F00A3CAFB /* SharingServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingServiceViewController.swift; sourceTree = "<group>"; };
+		43FDDB582BEE7A1F00A3CAFB /* SharingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingService.swift; sourceTree = "<group>"; };
 		43FDDB5B2BEE7A7500A3CAFB /* DocumentWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentWindowController.swift; sourceTree = "<group>"; };
 		43FDDB612BEE7ED000A3CAFB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43665F012BF393A7004929C9 /* NetworkReachability in Frameworks */,
 				43FDDB542BEE79FE00A3CAFB /* AutomergeRepo in Frameworks */,
 				43FDDB512BEE79F000A3CAFB /* Automerge in Frameworks */,
 			);
@@ -74,8 +76,8 @@
 				43FDDB5B2BEE7A7500A3CAFB /* DocumentWindowController.swift */,
 				43FDDB412BEE799B00A3CAFB /* Document.swift */,
 				43FDDB552BEE7A1000A3CAFB /* CountStore.swift */,
-				43FDDB582BEE7A1F00A3CAFB /* CloudService.swift */,
-				43FDDB572BEE7A1F00A3CAFB /* CloudServiceViewController.swift */,
+				43FDDB582BEE7A1F00A3CAFB /* SharingService.swift */,
+				43FDDB572BEE7A1F00A3CAFB /* SharingServiceViewController.swift */,
 				43FDDB432BEE799C00A3CAFB /* Assets.xcassets */,
 				43FDDB452BEE799C00A3CAFB /* Main.storyboard */,
 				43FDDB482BEE799C00A3CAFB /* Info.plist */,
@@ -103,6 +105,7 @@
 			packageProductDependencies = (
 				43FDDB502BEE79F000A3CAFB /* Automerge */,
 				43FDDB532BEE79FE00A3CAFB /* AutomergeRepo */,
+				43665F002BF393A7004929C9 /* NetworkReachability */,
 			);
 			productName = CloudCount;
 			productReference = 43FDDB3A2BEE799B00A3CAFB /* CloudCount.app */;
@@ -135,6 +138,7 @@
 			packageReferences = (
 				43FDDB4F2BEE79F000A3CAFB /* XCRemoteSwiftPackageReference "automerge-swift" */,
 				43FDDB522BEE79FE00A3CAFB /* XCRemoteSwiftPackageReference "automerge-repo-swift" */,
+				43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */,
 			);
 			productRefGroup = 43FDDB3B2BEE799B00A3CAFB /* Products */;
 			projectDirPath = "";
@@ -163,12 +167,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				43FDDB402BEE799B00A3CAFB /* DocumentViewController.swift in Sources */,
-				43FDDB592BEE7A1F00A3CAFB /* CloudServiceViewController.swift in Sources */,
+				43FDDB592BEE7A1F00A3CAFB /* SharingServiceViewController.swift in Sources */,
 				43FDDB562BEE7A1000A3CAFB /* CountStore.swift in Sources */,
 				43FDDB5C2BEE7A7500A3CAFB /* DocumentWindowController.swift in Sources */,
 				43FDDB3E2BEE799B00A3CAFB /* AppDelegate.swift in Sources */,
 				43FDDB422BEE799B00A3CAFB /* Document.swift in Sources */,
-				43FDDB5A2BEE7A1F00A3CAFB /* CloudService.swift in Sources */,
+				43FDDB5A2BEE7A1F00A3CAFB /* SharingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +388,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vsanthanam/NetworkReachability.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		43FDDB4F2BEE79F000A3CAFB /* XCRemoteSwiftPackageReference "automerge-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/automerge/automerge-swift.git";
@@ -403,6 +415,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		43665F002BF393A7004929C9 /* NetworkReachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */;
+			productName = NetworkReachability;
+		};
 		43FDDB502BEE79F000A3CAFB /* Automerge */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 43FDDB4F2BEE79F000A3CAFB /* XCRemoteSwiftPackageReference "automerge-swift" */;

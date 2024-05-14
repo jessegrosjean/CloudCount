@@ -704,7 +704,7 @@
         <!--Document View Controller-->
         <scene sceneID="5qR-Dx-zIp">
             <objects>
-                <viewController id="esP-hH-Dim" customClass="DocumentViewController" customModule="AutomergeRepoDocumentBasedApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="esP-hH-Dim" customClass="DocumentViewController" customModule="CloudCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="4C2-Tq-lKm">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -743,12 +743,12 @@
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-7s-HX5">
                                 <rect key="frame" x="18" y="197" width="136" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Cloud" bezelStyle="regularSquare" imagePosition="left" inset="2" id="LQQ-aq-Il7">
+                                <buttonCell key="cell" type="check" title="Share" bezelStyle="regularSquare" imagePosition="left" inset="2" id="LQQ-aq-Il7">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="toggleCloud:" target="esP-hH-Dim" id="pU2-QG-aBt"/>
+                                    <action selector="toggleSharing:" target="esP-hH-Dim" id="pU2-QG-aBt"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkF-TM-VOV">
@@ -763,9 +763,9 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="cloudStatus" destination="xkF-TM-VOV" id="3kB-x2-V2X"/>
-                        <outlet property="cloudToggleButton" destination="5uZ-7s-HX5" id="HC2-pF-364"/>
                         <outlet property="countLabel" destination="RkM-mt-Ks8" id="us5-Cy-eUY"/>
+                        <outlet property="sharingStatus" destination="xkF-TM-VOV" id="3kB-x2-V2X"/>
+                        <outlet property="sharingToggleButton" destination="5uZ-7s-HX5" id="HC2-pF-364"/>
                     </connections>
                 </viewController>
                 <customObject id="CJk-0A-LsZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -776,7 +776,7 @@
         <scene sceneID="Jrc-gp-9Em">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="JHy-EO-Mqo" sceneMemberID="viewController">
-                    <window key="window" title="Cloud Status" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZNf-QT-SKs">
+                    <window key="window" title="Sharing Status" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZNf-QT-SKs">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="211" y="267" width="480" height="270"/>
@@ -797,10 +797,10 @@
             </objects>
             <point key="canvasLocation" x="-507" y="-295"/>
         </scene>
-        <!--Cloud Service View Controller-->
+        <!--Sharing Service View Controller-->
         <scene sceneID="DRb-e8-Ft8">
             <objects>
-                <viewController id="oVw-FN-9r1" customClass="CloudServiceViewController" customModule="AutomergeRepoDocumentBasedApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oVw-FN-9r1" customClass="SharingServiceViewController" customModule="CloudCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VyH-3A-2r3">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

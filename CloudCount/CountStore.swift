@@ -11,14 +11,14 @@ public class CountStore {
     
     public let id: DocumentId
     
-    private var cloud: Bool
+    private var sharing: Bool
     private var heads: Set<ChangeHash> = []
     private var automergeSubscription: AnyCancellable?
     private let eventsInner: PassthroughSubject<Event, Never> = .init()
 
-    init(id: DocumentId = .init(), cloud: Bool = false, automerge: Automerge.Document = .init()) {
+    init(id: DocumentId = .init(), sharing: Bool = false, automerge: Automerge.Document = .init()) {
         self.id = id
-        self.cloud = cloud
+        self.sharing = sharing
         self.automerge = automerge
         defer { self.automerge = automerge }
     }
@@ -26,7 +26,7 @@ public class CountStore {
     deinit {
         let id = id
         Task {
-            await CloudService.shared.remove(id: id)
+            await SharingService.shared.stopSharing(id: id)
         }
     }
 
@@ -71,11 +71,11 @@ public class CountStore {
         }
     }
     
-    func toggleCloud() async {
-        if cloud {
-            await CloudService.shared.remove(id: id)
+    func toggleSharing() async {
+        if sharing {
+            await SharingService.shared.stopSharing(id: id)
         } else {
-            await CloudService.shared.share(store: self)
+            await SharingService.shared.share(store: self)
         }
     }
 
@@ -108,12 +108,12 @@ extension CountStore {
             fatalError()
         }
 
-        let cloud = properties["cloud"] as? Bool ?? false
+        let sharing = properties["sharing"] as? Bool ?? false
         let automerge = try Automerge.Document(data)
         
         self.init(
             id: documentId,
-            cloud: cloud,
+            sharing: sharing,
             automerge: automerge
         )
     }
@@ -121,7 +121,7 @@ extension CountStore {
     public func save() -> Data {
         try! PropertyListSerialization.data(fromPropertyList: [
             "id" : id.id,
-            "cloud" : false,
+            "sharing" : sharing,
             "data" : automerge.save()
         ], format: .binary, options: 0)
     }
