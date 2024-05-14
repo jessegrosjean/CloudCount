@@ -35,7 +35,11 @@ class Document: NSDocument {
     }
     
     override class var autosavesInPlace: Bool {
-        return true
+        true
+    }
+    
+    override var allowsDocumentSharing: Bool {
+        true
     }
 
     override func makeWindowControllers() {
