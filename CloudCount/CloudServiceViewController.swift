@@ -6,7 +6,7 @@ class CloudServiceViewController: NSViewController {
 
     @IBOutlet weak var textView: NSTextView!
 
-    var serviceStatus: CloudService.Status = .offline(nil)
+    var serviceStatus: CloudService.Status = .init(state: .disconnected, error: nil)
     var documentsStatus: [DocumentId : CloudService.DocumentStatus] = [:]
     var subscriptions = Set<AnyCancellable>()
 
@@ -38,16 +38,10 @@ class CloudServiceViewController: NSViewController {
             return
         }
         
-        var string = "Cloud: "
+        var string = "Cloud: \(serviceStatus.state)"
         
-        switch serviceStatus {
-        case .online:
-            string += "Online"
-        case .offline(let error):
-            string += "Offline"
-            if let error {
-                string += "-(\(error.localizedDescription)"
-            }
+        if let error = serviceStatus.error {
+            string += " (\(error.localizedDescription))"
         }
         
         string += "\n\nCloud Documents:\n\n"

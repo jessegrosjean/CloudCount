@@ -8,9 +8,9 @@ public final class CloudService {
     
     public static let shared = CloudService()
     
-    public enum Status {
-        case online
-        case offline(Error?)
+    public struct Status {
+        public let state: WebSocketProviderState
+        public let error: Error?
     }
     
     public enum DocumentStatus {
@@ -20,17 +20,31 @@ public final class CloudService {
     
     private let repo = Repo(sharePolicy: SharePolicy.agreeable)
     private var websocket = WebSocketProvider(.init(reconnectOnError: false, loggingAt: .tracing))
-    private let statusInner: CurrentValueSubject<Status, Never> = .init(.offline(nil))
+    private let statusInner: CurrentValueSubject<Status, Never> = .init(.init(state: .disconnected, error: nil))
     private let documentsStatusInner: CurrentValueSubject<[DocumentId : DocumentStatus], Never> = .init([:])
+    private var websocketStateCancelable: AnyCancellable?
 
     init() {
         repo.addNetworkAdapter(adapter: websocket)
+        
+        websocketStateCancelable = websocket.statePublisher.sink { [weak self] state in
+            switch state {
+            case .connected:
+                self?.statusInner.value = .init(state: .connected, error: nil)
+            case .ready:
+                self?.statusInner.value = .init(state: .ready, error: nil)
+            case .reconnecting:
+                self?.statusInner.value = .init(state: .reconnecting, error: nil)
+            case .disconnected:
+                self?.statusInner.value = .init(state: .disconnected, error: nil)
+            }
+        }
+        
         Task {
             do {
                 try await websocket.connect(to: URL(string: "wss://sync.automerge.org/")!)
-                statusInner.value = .online
             } catch {
-                statusInner.value = .offline(error)
+                statusInner.value = .init(state: .disconnected, error: error)
             }
         }
     }
