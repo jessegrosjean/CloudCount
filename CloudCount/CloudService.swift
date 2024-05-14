@@ -64,22 +64,22 @@ public final class CloudService {
             }.eraseToAnyPublisher()
     }
     
-    public func add(store: CountStore) async {
+    public func share(store: CountStore) async {
         let id = store.id
 
         do {
-            let handle = try await repo.find(id: id)
-            try handle.doc.merge(other: store.automerge)
-            store.automerge = handle.doc
-            documentsStatusInner.value[id] = .registered
-        } catch {
-            do {
+            if repo.documentIds().contains(id) {
+                let handle = try await repo.find(id: id)
+                try handle.doc.merge(other: store.automerge)
+                store.automerge = handle.doc
+                documentsStatusInner.value[id] = .registered
+            } else {
                 let handle = try await repo.create(doc: store.automerge, id: id)
                 assert(handle.doc === store.automerge)
                 documentsStatusInner.value[id] = .registered
-            } catch {
-                documentsStatusInner.value[id] = .registrationFailed(error)
             }
+        } catch {
+            documentsStatusInner.value[id] = .registrationFailed(error)
         }
     }
 

@@ -81,7 +81,7 @@ class DocumentViewController: NSViewController {
         
         Task {
             if cloudToggleButton.state == .on {
-                await CloudService.shared.add(store: countStore)
+                await CloudService.shared.share(store: countStore)
             } else {
                 await CloudService.shared.remove(id: countStore.id)
             }

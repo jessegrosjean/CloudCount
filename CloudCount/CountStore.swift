@@ -75,7 +75,7 @@ public class CountStore {
         if cloud {
             await CloudService.shared.remove(id: id)
         } else {
-            await CloudService.shared.add(store: self)
+            await CloudService.shared.share(store: self)
         }
     }
 
