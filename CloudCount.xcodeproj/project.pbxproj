@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43356AC12BF6379D001182C5 /* AutomergeRepo in Frameworks */ = {isa = PBXBuildFile; productRef = 43356AC02BF6379D001182C5 /* AutomergeRepo */; };
 		43665F012BF393A7004929C9 /* NetworkReachability in Frameworks */ = {isa = PBXBuildFile; productRef = 43665F002BF393A7004929C9 /* NetworkReachability */; };
 		43FDDB3E2BEE799B00A3CAFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB3D2BEE799B00A3CAFB /* AppDelegate.swift */; };
 		43FDDB402BEE799B00A3CAFB /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB3F2BEE799B00A3CAFB /* DocumentViewController.swift */; };
@@ -14,7 +15,6 @@
 		43FDDB442BEE799C00A3CAFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43FDDB432BEE799C00A3CAFB /* Assets.xcassets */; };
 		43FDDB472BEE799C00A3CAFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 43FDDB462BEE799C00A3CAFB /* Base */; };
 		43FDDB512BEE79F000A3CAFB /* Automerge in Frameworks */ = {isa = PBXBuildFile; productRef = 43FDDB502BEE79F000A3CAFB /* Automerge */; };
-		43FDDB542BEE79FE00A3CAFB /* AutomergeRepo in Frameworks */ = {isa = PBXBuildFile; productRef = 43FDDB532BEE79FE00A3CAFB /* AutomergeRepo */; };
 		43FDDB562BEE7A1000A3CAFB /* CountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB552BEE7A1000A3CAFB /* CountStore.swift */; };
 		43FDDB592BEE7A1F00A3CAFB /* SharingServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB572BEE7A1F00A3CAFB /* SharingServiceViewController.swift */; };
 		43FDDB5A2BEE7A1F00A3CAFB /* SharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FDDB582BEE7A1F00A3CAFB /* SharingService.swift */; };
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43356AC12BF6379D001182C5 /* AutomergeRepo in Frameworks */,
 				43665F012BF393A7004929C9 /* NetworkReachability in Frameworks */,
-				43FDDB542BEE79FE00A3CAFB /* AutomergeRepo in Frameworks */,
 				43FDDB512BEE79F000A3CAFB /* Automerge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,8 +104,8 @@
 			name = CloudCount;
 			packageProductDependencies = (
 				43FDDB502BEE79F000A3CAFB /* Automerge */,
-				43FDDB532BEE79FE00A3CAFB /* AutomergeRepo */,
 				43665F002BF393A7004929C9 /* NetworkReachability */,
+				43356AC02BF6379D001182C5 /* AutomergeRepo */,
 			);
 			productName = CloudCount;
 			productReference = 43FDDB3A2BEE799B00A3CAFB /* CloudCount.app */;
@@ -119,7 +119,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					43FDDB392BEE799B00A3CAFB = {
 						CreatedOnToolsVersion = 15.3;
@@ -137,8 +137,8 @@
 			mainGroup = 43FDDB312BEE799B00A3CAFB;
 			packageReferences = (
 				43FDDB4F2BEE79F000A3CAFB /* XCRemoteSwiftPackageReference "automerge-swift" */,
-				43FDDB522BEE79FE00A3CAFB /* XCRemoteSwiftPackageReference "automerge-repo-swift" */,
 				43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */,
+				43356ABF2BF6379D001182C5 /* XCRemoteSwiftPackageReference "automerge-repo-swift" */,
 			);
 			productRefGroup = 43FDDB3B2BEE799B00A3CAFB /* Products */;
 			projectDirPath = "";
@@ -224,6 +224,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -287,6 +288,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -317,6 +319,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 64A5CLJP5W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -345,6 +348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 64A5CLJP5W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -388,6 +392,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		43356ABF2BF6379D001182C5 /* XCRemoteSwiftPackageReference "automerge-repo-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/automerge/automerge-repo-swift.git";
+			requirement = {
+				branch = "split-create-import";
+				kind = branch;
+			};
+		};
 		43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vsanthanam/NetworkReachability.git";
@@ -404,17 +416,14 @@
 				minimumVersion = 0.5.15;
 			};
 		};
-		43FDDB522BEE79FE00A3CAFB /* XCRemoteSwiftPackageReference "automerge-repo-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/automerge/automerge-repo-swift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		43356AC02BF6379D001182C5 /* AutomergeRepo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43356ABF2BF6379D001182C5 /* XCRemoteSwiftPackageReference "automerge-repo-swift" */;
+			productName = AutomergeRepo;
+		};
 		43665F002BF393A7004929C9 /* NetworkReachability */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 43665EFF2BF393A7004929C9 /* XCRemoteSwiftPackageReference "NetworkReachability" */;
@@ -424,11 +433,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 43FDDB4F2BEE79F000A3CAFB /* XCRemoteSwiftPackageReference "automerge-swift" */;
 			productName = Automerge;
-		};
-		43FDDB532BEE79FE00A3CAFB /* AutomergeRepo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 43FDDB522BEE79FE00A3CAFB /* XCRemoteSwiftPackageReference "automerge-repo-swift" */;
-			productName = AutomergeRepo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

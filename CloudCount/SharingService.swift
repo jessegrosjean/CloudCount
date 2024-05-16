@@ -92,16 +92,9 @@ public final class SharingService {
         let id = store.id
 
         do {
-            if repo.documentIds().contains(id) {
-                let handle = try await repo.find(id: id)
-                try handle.doc.merge(other: store.automerge)
-                store.automerge = handle.doc
-                documentsStatusInner.value[id] = .registered
-            } else {
-                let handle = try await repo.create(doc: store.automerge, id: id)
-                assert(handle.doc === store.automerge)
-                documentsStatusInner.value[id] = .registered
-            }
+            let handle = try await repo.import(handle: .init(id: store.id, doc: store.automerge))
+            store.automerge = handle.doc
+            documentsStatusInner.value[id] = .registered
         } catch {
             documentsStatusInner.value[id] = .registrationFailed(error)
         }

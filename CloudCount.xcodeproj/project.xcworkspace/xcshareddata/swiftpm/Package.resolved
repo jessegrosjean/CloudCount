@@ -1,13 +1,13 @@
 {
-  "originHash" : "6211336a71e82d2d5cfce644f03367b43e5a39d74dbbb9dbe501729913de3e76",
+  "originHash" : "0a3e2fe073ffcdb765fde8fee821e90264f3541ef18cdad009524f9b0fbbed55",
   "pins" : [
     {
       "identity" : "automerge-repo-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/automerge/automerge-repo-swift.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "9ccb1520c9c6766071504812284b68a19dbb6337"
+        "branch" : "split-create-import",
+        "revision" : "15ef9a6472ad1495a29294a968ef07f247b84105"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/outfoxx/PotentCodables",
       "state" : {
-        "revision" : "583f1b04b89e36742255d05ef1d2e5961485811d",
-        "version" : "3.2.0"
+        "revision" : "54688009d2606f2df78f9255e084953f153e84b8",
+        "version" : "3.3.0"
       }
     },
     {
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-distributed-tracing",
       "state" : {
-        "revision" : "7fbb8b23b77ee548b3d0686b6faf735c1b3c7cb8",
-        "version" : "1.1.0"
+        "revision" : "11c756c5c4d7de0eeed8595695cadd7fa107aa19",
+        "version" : "1.1.1"
       }
     },
     {
