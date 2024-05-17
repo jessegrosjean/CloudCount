@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/automerge/automerge-repo-swift.git",
       "state" : {
-        "branch" : "split-create-import",
-        "revision" : "15ef9a6472ad1495a29294a968ef07f247b84105"
+        "revision" : "39f75a825e566d0c850db180675f676060b7f326",
+        "version" : "0.2.0"
       }
     },
     {

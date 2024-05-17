@@ -92,7 +92,10 @@ public final class SharingService {
         let id = store.id
 
         do {
-            let handle = try await repo.import(handle: .init(id: store.id, doc: store.automerge))
+            let handle = try await repo.import(handle: .init(
+                id: store.id,
+                doc: store.automerge
+            ))
             store.automerge = handle.doc
             documentsStatusInner.value[id] = .registered
         } catch {
