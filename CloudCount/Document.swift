@@ -143,9 +143,11 @@ class Document: NSDocument {
             return
         }
 
-        var status = ""
+        var status = "ID: \(countStore.id)\n\n"
 
-        status += "Document's FileWrapper:\n\n"
+        assert(countStore.id == storage.id)
+        
+        status += "FileWrapperStorage:\n\n"
 
         let wrapper = storage.fileWrapper
         if let incrementals = wrapper["incrementals"] {
@@ -153,6 +155,13 @@ class Document: NSDocument {
         }
         if let snapshots = wrapper["snapshots"] {
             status += snapshots.debugHiearhcy() + "\n"
+        }
+
+        if !storage.unsavedChanges.isEmpty {
+            status += "unsaved changes:\n"
+            for each in storage.unsavedChanges {
+                status += "  \(each.key)\n"
+            }
         }
         
         status += "\nVersions:\n\n"

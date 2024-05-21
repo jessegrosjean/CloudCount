@@ -40,13 +40,13 @@ public struct FileWrapperStorage {
         self.doc = try read(fileWrapper)
     }
     
-    public mutating func read(_ fileWrapper: FileWrapper) throws -> Automerge.Document {
-        guard fileWrapper !== self.fileWrapper else {
+    public mutating func read(_ readWrapper: FileWrapper) throws -> Automerge.Document {
+        guard readWrapper !== fileWrapper else {
             return doc
         }
         
-        let (_, _, storeSnapshots, storeIncrementals) = try Self.extract(fileWrapper: fileWrapper)
-        let (readId, _, readSnapshots, readIncrementals) = try Self.extract(fileWrapper: fileWrapper)
+        let (_, _, snapshots, incrementals) = try Self.extract(fileWrapper: fileWrapper)
+        let (readId, _, readSnapshots, readIncrementals) = try Self.extract(fileWrapper: readWrapper)
 
         guard id == readId else {
             throw Error(msg: "Read ID doesn't match")
@@ -58,13 +58,13 @@ public struct FileWrapperStorage {
         
         var newChanges: [String : Data] = [:]
                     
-        for readKey in Set(readSnapshots.fileWrappers!.keys).subtracting(storeSnapshots.fileWrappers!.keys) {
+        for readKey in Set(readSnapshots.fileWrappers!.keys).subtracting(snapshots.fileWrappers!.keys) {
             if let data = readSnapshots[readKey]?.regularFileContents {
                 newChanges[readKey] = data
             }
         }
 
-        for readKey in Set(readIncrementals.fileWrappers!.keys).subtracting(storeIncrementals.fileWrappers!.keys) {
+        for readKey in Set(readIncrementals.fileWrappers!.keys).subtracting(incrementals.fileWrappers!.keys) {
             if let data = readIncrementals[readKey]?.regularFileContents {
                 newChanges[readKey] = data
             }
@@ -78,7 +78,7 @@ public struct FileWrapperStorage {
             }
         }
         
-        self.fileWrapper = fileWrapper
+        self.fileWrapper = readWrapper
         self.fileWrapperHeads = doc.heads()
         
         return doc
