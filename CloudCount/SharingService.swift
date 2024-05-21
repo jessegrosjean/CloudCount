@@ -43,17 +43,19 @@ public final class SharingService {
         }
         
         Task { [weak self] in
+            await self?.connectWebsocket()
+            
             for await path in NetworkMonitor.networkPathUpdates {
                 guard let self else {
                     return
                 }
                 if path.status == .satisfied {
                     if self.statusInner.value.state == .disconnected {
-                        await self.connectWebsocket()
+                        //await self.connectWebsocket()
                     }
                 } else {
                     if self.statusInner.value.state != .disconnected {
-                        await self.shutdownWebsocket()
+                        //await self.shutdownWebsocket()
                     }
                 }
             }

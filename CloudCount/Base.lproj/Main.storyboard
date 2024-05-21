@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="JHy-EO-Mqo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -706,64 +706,158 @@
             <objects>
                 <viewController id="esP-hH-Dim" customClass="DocumentViewController" customModule="CloudCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="4C2-Tq-lKm">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-C7-5jx">
-                                <rect key="frame" x="13" y="223" width="95" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Increment" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FD1-3M-0by">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jSF-yP-mUI">
+                                <rect key="frame" x="20" y="200" width="528" height="50"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Xb-DQ-Jfs">
+                                        <rect key="frame" x="0.0" y="30" width="528" height="20"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dxf-Jr-xK0">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="20"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-C7-5jx">
+                                                        <rect key="frame" x="-7" y="-7" width="95" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Increment" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FD1-3M-0by">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="increment:" target="esP-hH-Dim" id="OVE-p2-bDs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="COq-0V-5dp">
+                                                        <rect key="frame" x="88" y="-7" width="101" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Decrement" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tEt-qn-7Wj">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="decrement:" target="esP-hH-Dim" id="yfh-Qd-GOl"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RkM-mt-Ks8">
+                                                        <rect key="frame" x="194" y="2" width="51" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="COUNT" id="BSD-kV-03f">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-hm-ymd">
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="16"/>
+                                        <subviews>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-7s-HX5">
+                                                <rect key="frame" x="-2" y="-1" width="128" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Automerge Repo" bezelStyle="regularSquare" imagePosition="left" inset="2" id="LQQ-aq-Il7">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="toggleSharing:" target="esP-hH-Dim" id="pU2-QG-aBt"/>
+                                                </connections>
+                                            </button>
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xkF-TM-VOV">
+                                                <rect key="frame" x="124" y="0.0" width="53" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="STATUS" id="17v-kB-y1E">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-Cd-zQs">
+                                <rect key="frame" x="20" y="60" width="528" height="132"/>
+                                <clipView key="contentView" drawsBackground="NO" id="daH-kd-Ag9">
+                                    <rect key="frame" x="1" y="1" width="526" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView wantsLayer="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="s6f-3E-AFD">
+                                            <rect key="frame" x="0.0" y="0.0" width="526" height="130"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="526" height="130"/>
+                                            <size key="maxSize" width="528" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Fhw-ZP-bG1">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="d8h-rn-IJ9">
+                                    <rect key="frame" x="511" y="1" width="16" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWc-EI-1it">
+                                <rect key="frame" x="379" y="13" width="176" height="32"/>
+                                <buttonCell key="cell" type="push" title="Remove Other Versions" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Wx-C7-xCX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="increment:" target="esP-hH-Dim" id="OVE-p2-bDs"/>
+                                    <action selector="removeOtherVersions:" target="esP-hH-Dim" id="XBZ-dQ-vyQ"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COq-0V-5dp">
-                                <rect key="frame" x="106" y="223" width="101" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Decrement" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tEt-qn-7Wj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="decrement:" target="esP-hH-Dim" id="yfh-Qd-GOl"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RkM-mt-Ks8">
-                                <rect key="frame" x="215" y="232" width="51" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="COUNT" id="BSD-kV-03f">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uZ-7s-HX5">
-                                <rect key="frame" x="18" y="197" width="136" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Share" bezelStyle="regularSquare" imagePosition="left" inset="2" id="LQQ-aq-Il7">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="toggleSharing:" target="esP-hH-Dim" id="pU2-QG-aBt"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkF-TM-VOV">
-                                <rect key="frame" x="31" y="177" width="92" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Cloud STATUS" id="17v-kB-y1E">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="jSF-yP-mUI" firstAttribute="top" secondItem="4C2-Tq-lKm" secondAttribute="top" constant="20" symbolic="YES" id="6dW-3E-meD"/>
+                            <constraint firstAttribute="trailing" secondItem="LWc-EI-1it" secondAttribute="trailing" constant="20" symbolic="YES" id="99g-Fv-IL5"/>
+                            <constraint firstAttribute="bottom" secondItem="LWc-EI-1it" secondAttribute="bottom" constant="20" symbolic="YES" id="Q7i-9E-z2c"/>
+                            <constraint firstAttribute="trailing" secondItem="jSF-yP-mUI" secondAttribute="trailing" constant="20" symbolic="YES" id="QaB-SU-X4E"/>
+                            <constraint firstItem="LWc-EI-1it" firstAttribute="top" secondItem="rcj-Cd-zQs" secondAttribute="bottom" constant="20" symbolic="YES" id="WrT-k2-fve"/>
+                            <constraint firstItem="jSF-yP-mUI" firstAttribute="leading" secondItem="4C2-Tq-lKm" secondAttribute="leading" constant="20" symbolic="YES" id="XID-fX-utI"/>
+                            <constraint firstAttribute="trailing" secondItem="rcj-Cd-zQs" secondAttribute="trailing" constant="20" symbolic="YES" id="ij4-aQ-dZZ"/>
+                            <constraint firstItem="rcj-Cd-zQs" firstAttribute="leading" secondItem="4C2-Tq-lKm" secondAttribute="leading" constant="20" symbolic="YES" id="k19-CE-lsH"/>
+                            <constraint firstItem="rcj-Cd-zQs" firstAttribute="top" secondItem="jSF-yP-mUI" secondAttribute="bottom" constant="8" symbolic="YES" id="qLu-Pw-OKf"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="countLabel" destination="RkM-mt-Ks8" id="us5-Cy-eUY"/>
+                        <outlet property="documentStatusView" destination="s6f-3E-AFD" id="jVe-mh-uVZ"/>
                         <outlet property="sharingStatus" destination="xkF-TM-VOV" id="3kB-x2-V2X"/>
                         <outlet property="sharingToggleButton" destination="5uZ-7s-HX5" id="HC2-pF-364"/>
                     </connections>

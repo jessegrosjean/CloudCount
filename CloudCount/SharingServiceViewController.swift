@@ -38,13 +38,13 @@ class SharingServiceViewController: NSViewController {
             return
         }
         
-        var string = "Cloud: \(serviceStatus.state)"
+        var string = "Automerge Cloud: \(serviceStatus.state)"
         
         if let error = serviceStatus.error {
             string += " (\(error.localizedDescription))"
         }
         
-        string += "\n\nShared Documents:\n\n"
+        string += "\n\nRegistered Documents:\n\n"
         
         for id in documentsStatus.keys.sorted() {
             switch documentsStatus[id]! {
