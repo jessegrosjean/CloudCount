@@ -105,7 +105,7 @@ public struct FileWrapperStorage {
         fileWrapperHeads = heads
         unsavedChanges = [:]
         
-        if fileWrapper["incrementals"]!.fileWrappers!.count > 3 {
+        if fileWrapper["incrementals"]!.fileWrappers!.count > 10 {
             try compact()
         }
         
