@@ -23,8 +23,9 @@ extension FileWrapper {
     func debugHiearhcy(indent: Int = 0) -> String {
         var string =  String(repeating: "  ", count: indent) + (filename ?? preferredFilename ?? "unnamed")
         if isDirectory, let fileWrappers {
+            string += "/"
             for key in fileWrappers.keys.sorted() {
-                string += "/\n" + fileWrappers[key]!.debugHiearhcy(indent: indent + 1)
+                string += "\n" + fileWrappers[key]!.debugHiearhcy(indent: indent + 1)
             }
         }
         return string

@@ -44,7 +44,7 @@ class SharingServiceViewController: NSViewController {
             string += " (\(error.localizedDescription))"
         }
         
-        string += "\n\nRegistered Documents:\n\n"
+        string += "\n\nDocuments in automerge repo:\n\n"
         
         for id in documentsStatus.keys.sorted() {
             switch documentsStatus[id]! {

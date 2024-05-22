@@ -93,22 +93,11 @@ class Document: NSDocument {
     }
     
     override func read(from url: URL, ofType typeName: String) throws {
-        resolveConflictsIfNeeded(schedule: true)
+        resolveConflictsIfNeeded()
         try super.read(from: url, ofType: typeName)
     }
     
-    private func resolveConflictsIfNeeded(schedule: Bool) {
-        // Not sure how much of this is right...
-        // Thinking is if we find a conflict resolve it by copying in any unque changes from that conflic. Automerge!
-        // Thinking on schedule is that if two people are working on same file at same time then can get into a resolve conflic loop when they both resolve at same time. Try to avoid that with this delay.
-        if schedule {
-            let offset = Double((0..<30).randomElement()!)
-            DispatchQueue.main.asyncAfter(deadline: .now() + offset) { [weak self] in
-                self?.resolveConflictsIfNeeded(schedule: false)
-            }
-            return
-        }
-        
+    private func resolveConflictsIfNeeded() {
         guard
             let fileURL,
             let conflicts = NSFileVersion.unresolvedConflictVersionsOfItem(at: fileURL), !conflicts.isEmpty
@@ -158,7 +147,7 @@ class Document: NSDocument {
 
         assert(countStore.id == storage.id)
         
-        status += "FileWrapperStorage:\n\n"
+        status += "File Wrapper:\n\n"
 
         let wrapper = storage.fileWrapper
         if let incrementals = wrapper["incrementals"] {
@@ -175,7 +164,7 @@ class Document: NSDocument {
             }
         }
         
-        status += "\nVersions:\n\n"
+        status += "\nFile Versions:\n\n"
         
         let otherVersions = NSFileVersion.otherVersionsOfItem(at: fileURL) ?? []
         let allVersions = [currentVersion] + otherVersions
